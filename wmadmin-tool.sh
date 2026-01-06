@@ -339,10 +339,10 @@ do
 done
 EOF
 
-chmod +x wmcreate wmdelete wmlist wmstart wmstop wmservice
+chmod +x wmcreate wmdelete wmlist wmstart wmstop wmrestart wmservice
 
 need_root
-for f in wmcreate wmdelete wmlist wmstart wmstop wmservice; do
+for f in wmcreate wmdelete wmlist wmstart wmstop wmrestart wmservice; do
     ln -sf "$ADDONS_DIR/$f" "$BIN_DIR/$f"
 done
 
