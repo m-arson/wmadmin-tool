@@ -62,7 +62,7 @@ if [[ "$MODE" == "uninstall" ]]; then
 
     rm -rf "$ADDONS_DIR"
 
-    for f in wmcreate wmdelete wmlist wmstart wmstop wmservice; do
+    for f in wmcreate wmdelete wmlist wmstart wmstop wmrestart wmservice; do
         rm -f "$BIN_DIR/$f"
     done
 
@@ -118,6 +118,7 @@ fi
 J_PORT="8075"
 P_PORT="5555"
 D_PORT="9555"
+S_PORT="5043"
 
 SS_LIST="$(ss -tulpn | grep LISTEN | awk '{print $5}' | grep -oE ':5[0-9]{3}|:8[0-9]{3}|:9[0-9]{3}')"
 IS_LIST="$("$BASE_DIR/wmlist" | grep -oE ': [0-9]+' | sed 's/: /:/')"
@@ -157,11 +158,23 @@ do
     IDX=$((IDX + 1))
 done
 
+IDX=0
+while [[ $IDX -lt 444 ]]
+do
+    if [[ $(grep -c ":${S_PORT}" <<< "$PORT_LIST") -eq 0 ]]
+    then
+        break
+    fi
+    S_PORT=$((S_PORT + 1))
+    IDX=$((IDX + 1))
+done
+
 "$INST_DIR/is_instance.sh" create \
     -Dinstance.name="$IS_NAME" \
     -Dprimary.port="$P_PORT" \
     -Ddiagnostic.port="$D_PORT" \
     -Djmx.port="$J_PORT" \
+    -Dsecure.port="$S_PORT" \
     -Dadmin.password=manage
 EOF
 
@@ -236,11 +249,13 @@ for IS in "$INST_DIR"/*; do
     P=$(grep watt.server.port= "$CONF" 2>/dev/null | cut -d= -f2)
     D=$(grep watt.server.diagnostic.port= "$CONF" 2>/dev/null | cut -d= -f2)
     J=$(grep jmxremote.port= "$WRAP" 2>/dev/null | sed 's/.*=//')
+    S=$(grep watt.server.securePort= "$CONF" 2>/dev/null | cut -d= -f2)
 
     if (( JSON )); then
         [[ $first -eq 0 ]] && json_out+=","
         first=0
         json_out+="{\"name\":\"$NAME\",\"state\":\"${STATE}\""
+        json_out+=",\"secure_port\":\"${S:-}\""
         json_out+=",\"primary_port\":\"${P:-}\""
         json_out+=",\"diagnostic_port\":\"${D:-}\""
         json_out+=",\"jmx_port\":\"${J:-}\"}"
@@ -248,6 +263,7 @@ for IS in "$INST_DIR"/*; do
         echo "---"
         "$IS/bin/sagis111" status
         printf "%20s: %s\n" "JMX Port" "${J:-Not Set}"
+        printf "%20s: %s\n" "Secure Port" "${S:-Not Set}"
         printf "%20s: %s\n" "Primary Port" "${P:-Not Set}"
         printf "%20s: %s\n" "Diagnostic Port" "${D:-Not Set}"
     fi

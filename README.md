@@ -31,11 +31,13 @@ When creating new Integration server it will have below default value:
 Username         : Administrator
 Password         : manage
 JMX Port*        : 8075
+Secure Port*     : 5043
 Primary Port*    : 5555
 Diagnostic Port* : 9555
 
 * Will increase the ports automatically (+1) when new Integration Server created. e.g.:
   - JMX Port is 8076
+  - Secure Port is 5044
   - Primary Port is 5556
   - Diagnostic Port is 9556
 
