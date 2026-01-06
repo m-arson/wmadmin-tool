@@ -25,6 +25,12 @@ To check the `wmadmin-tool.sh` version can use command
 
 ![install.png](./resources/install.png "install.png")
 
+## Default Credential
+
+| Username       | Password      |
+| ---------------|:-------------:|
+| Administrator  | manage        |
+
 ## Uninstall
 To uninstall **WmAdmin Tool** just run command:
 
