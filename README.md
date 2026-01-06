@@ -20,7 +20,7 @@ To check the `wmadmin-tool.sh` version can use command
 ![version.png](./resources/version.png "version.png")
 
 ```
-./wmadmin-tool.sh install --dir /opt/wm
+./wmadmin-tool.sh install --dir <webmethods_root>
 ```
 
 ![install.png](./resources/install.png "install.png")
@@ -47,7 +47,7 @@ Diagnostic Port* : 9555
 To uninstall **WmAdmin Tool** just run command:
 
 ```
-./wmadmin-tool.sh uninstall --dir /opt/wm
+./wmadmin-tool.sh uninstall --dir <webmethods_root>
 ```
 ![uninstall.png](./resources/uninstall.png "uninstall.png")
 
