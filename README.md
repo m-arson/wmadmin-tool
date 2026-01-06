@@ -60,3 +60,5 @@ List all Integration Server
 wmlist
 wmlist --json
 ```
+![wmlist.png](./resources/wmlist.png "wmlist.png")
+![wmlist_json.png](./resources/wmlist_json.png "wmlist_json.png")
