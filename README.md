@@ -14,7 +14,7 @@ chmod +x wmadmin-tool.sh
 
 To check the `wmadmin-tool.sh` version can use command
 ```
-./wmadmin-tool.sh 
+./wmadmin-tool.sh version
 ```
 
 ![version.png](./resources/version.png "version.png")
