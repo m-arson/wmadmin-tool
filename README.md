@@ -1,0 +1,62 @@
+# WmAdmin Tool Guide
+
+**WmAdmin Tool** is custom tool made for simplify WebMethod Integration Server management. Not so fancy, just for personal use.
+
+## Installation
+
+Clone the latest build from github, and make it executable
+
+```
+git clone https://github.com/m-arson/wmadmin-tool.git
+cd wmadmin-tool/
+chmod +x wmadmin-tool.sh
+```
+
+To check the `wmadmin-tool.sh` version can use command
+```
+./wmadmin-tool.sh 
+```
+
+![version.png](./resources/version.png "version.png")
+
+```
+./wmadmin-tool.sh install --dir /opt/wm
+```
+
+![install.png](./resources/install.png "install.png")
+
+## Uninstall
+To uninstall **WmAdmin Tool** just run command:
+
+```
+./wmadmin-tool.sh uninstall --dir /opt/wm
+```
+![uninstall.png](./resources/uninstall.png "uninstall.png")
+
+## Administration
+
+Create new Integration Server
+```
+wmcreate <integrationServerName>
+```
+
+Delete Integration Server
+```
+wmdelete <integrationServerName>
+```
+
+Start Integration Server
+```
+wmstart <integrationServerName>
+```
+
+Stop Integration Server
+```
+wmstop <integrationServerName>
+```
+
+List all Integration Server
+```
+wmlist
+wmlist --json
+```
