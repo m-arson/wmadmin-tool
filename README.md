@@ -25,11 +25,21 @@ To check the `wmadmin-tool.sh` version can use command
 
 ![install.png](./resources/install.png "install.png")
 
-## Default Credential
+When creating new Integration server it will have below default value:
 
-| Username       | Password      |
-| ---------------|:-------------:|
-| Administrator  | manage        |
+```
+Username         : Administrator
+Password         : manage
+JMX Port*        : 8075
+Primary Port*    : 5555
+Diagnostic Port* : 9555
+
+* Will increase the ports automatically (+1) when new Integration Server created. e.g.:
+  - JMX Port is 8076
+  - Primary Port is 5556
+  - Diagnostic Port is 9556
+
+```
 
 ## Uninstall
 To uninstall **WmAdmin Tool** just run command:
