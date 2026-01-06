@@ -347,3 +347,5 @@ for f in wmcreate wmdelete wmlist wmstart wmstop wmrestart wmservice; do
 done
 
 echo "[SUCCESS] wm admin tools installed"
+
+
