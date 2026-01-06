@@ -256,7 +256,7 @@ done
 (( JSON )) && echo "$json_out]"
 EOF
 
-for cmd in start stop; do
+for cmd in start stop restart; do
 cat > wm$cmd <<EOF
 #!/bin/bash
 #

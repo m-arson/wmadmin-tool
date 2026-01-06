@@ -71,6 +71,11 @@ Stop Integration Server
 wmstop <integrationServerName>
 ```
 
+Restart Integration Server
+```
+wmrestart <integrationServerName>
+```
+
 List all Integration Server
 ```
 wmlist
